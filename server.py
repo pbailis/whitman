@@ -2,6 +2,11 @@ from flask import Flask, request, send_file
 import pickle
 import random
 
+from OpenSSL import SSL
+context = SSL.Context(SSL.SSLv23_METHOD)
+context.use_privatekey_file('server.pem')
+context.use_certificate_file('server.crt')
+
 poems = pickle.load(open( "whitman-log/log.pkl"))
 
 # set the project root directory as the static folder, you can set others.
