@@ -1,6 +1,7 @@
 from flask import Flask, request, send_file
 import pickle
 import random
+import sys
 
 from OpenSSL import SSL
 context = SSL.Context(SSL.SSLv23_METHOD)
@@ -25,4 +26,7 @@ def hello_world():
 
     
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', ssl_context=context)
+    if len(sys.argv > 2):
+        app.run(debug=True, host='0.0.0.0', ssl_context=context)
+    else:
+        app.run(debug=True, host='0.0.0.0')
