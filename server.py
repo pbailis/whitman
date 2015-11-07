@@ -3,11 +3,6 @@ import pickle
 import random
 import sys
 
-from OpenSSL import SSL
-context = SSL.Context(SSL.SSLv23_METHOD)
-context.use_privatekey_file('server.pem')
-context.use_certificate_file('server.crt')
-
 poems = pickle.load(open( "whitman-log/log.pkl"))
 
 # set the project root directory as the static folder, you can set others.
@@ -27,6 +22,6 @@ def hello_world():
     
 if __name__ == "__main__":
     if len(sys.argv > 2):
-        app.run(debug=True, host='0.0.0.0', ssl_context=context, port=5443)
+        app.run(debug=True, host='0.0.0.0', ssl_context='adhoc', port=5443)
     else:
         app.run(debug=True, host='0.0.0.0', port=5080)
