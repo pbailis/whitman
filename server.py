@@ -27,6 +27,6 @@ def hello_world():
     
 if __name__ == "__main__":
     if len(sys.argv > 2):
-        app.run(debug=True, host='0.0.0.0', ssl_context=context)
+        app.run(debug=True, host='0.0.0.0', ssl_context=context, port=5443)
     else:
-        app.run(debug=True, host='0.0.0.0')
+        app.run(debug=True, host='0.0.0.0', port=5080)
